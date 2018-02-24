@@ -1,0 +1,42 @@
+/* Title
+--------------------------------------------- */
+
+.post__title {
+  margin-top: 0;
+
+  .page--index & {
+    display: none;
+  }
+}
+
+.post__anchor {
+
+  &:link,
+  &:visited {
+    text-decoration: none;
+    color: #DDD;
+  }
+
+  &:hover {
+    color: $link-color;
+  }
+}
+
+/* Conclusion
+--------------------------------------------- */
+
+.post__conclusion {
+  padding: 0 20px;
+  border: 2px solid yellowgreen;
+  border-left-width: 20px;
+  border-radius: 5px;
+}
+
+.post__conclusion-title {
+  margin-bottom: 0;
+}
+
+.post__conclusion-list,
+.post__conclusion-text {
+  margin-top: 5px;
+}

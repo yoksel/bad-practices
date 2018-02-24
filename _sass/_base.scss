@@ -56,13 +56,6 @@ H2 {
     font-size: 2.5rem;
   }
 }
-  .post__title {
-    margin-top: 0;
-
-    .page--index & {
-      display: none;
-    }
-  }
 
 H3 {
   font-size: 1.5rem;
@@ -150,7 +143,7 @@ DD > DL {
 }
 
 DD:not(:last-child) {
-    margin-bottom: .5rem;
+    margin-bottom: 2rem;
 }
 
 PRE,
@@ -245,12 +238,3 @@ OL > LI {
   }
 }
 
-/* Conclusion
---------------------------------------------- */
-
-.post__conclusion {
-  padding: 0 20px 10px;
-  border: 2px solid yellowgreen;
-  border-left-width: 20px;
-  border-radius: 5px;
-}
