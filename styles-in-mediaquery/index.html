@@ -1,0 +1,80 @@
+---
+layout: page
+title: Не дублируйте стили в медиавыражениях
+---
+
+<dl>
+<dt>Почему?</dt>
+<dd>
+  <p>Использование медиавыражений не сбрасывает предыдущие стили</p>
+</dd>
+
+<dt>Как это увидеть?</dt>
+<dd>
+  <p>В браузере в инструментах разработчика:</p>
+
+  <figure class="figure figure--has-figcaption">
+    <img src="../assets/img/mediaqueries/before.png">
+
+    <figcaption>Все перечёркнутые свойства были унаследованы, но затем были перезаписаны, хотя некоторые значения остались теми же.</figcaption>
+  </figure>
+</dd>
+
+<dt>А как надо?</dt>
+<dd>
+  <p>В медиавыражение добавляйте только свойства, которые меняются:</p>
+
+  <ul class="compare">
+    <li class="compare__item compare__item--bad">
+      <h4 class="compare__title">Плохо</h4>
+{% highlight css %}.news-item__title {
+  margin-bottom: 30px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #DDD;
+  font-family: Tahoma, sans-serif;
+  font-size: 22px;
+  line-height: 1.4;
+  color: #000;
+  }
+
+@media (min-width: 600px) {
+  .news-item__title {
+    margin-bottom: 40px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #DDD;
+    font-family: Tahoma, sans-serif;
+    font-size: 24px;
+    line-height: 1.4;
+    color: #000;
+  }
+}{% endhighlight %}
+  </li>
+  <li class="compare__item compare__item--good">
+    <h4 class="compare__title">Хорошо</h4>
+{% highlight css %}.news-item__title {
+  margin-bottom: 30px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #DDD;
+  font-family: Tahoma, sans-serif;
+  font-size: 22px;
+  line-height: 1.4;
+  color: #000;
+  }
+
+@media (min-width: 600px) {
+  .news-item__title {
+    margin-bottom: 40px;
+    font-size: 24px;
+  }
+}{% endhighlight %}
+    </li>
+  </ul>
+
+  <p>Такой код быстрее писать и проще поддерживать.</p>
+</dd>
+
+<div class="post__conclusion">
+  <h3>Итого</h3>
+
+  <p>Медиавыражения не сбрасывают стили. Добавляйте в них только те свойства, которые нужно переопределить.</p>
+</div>

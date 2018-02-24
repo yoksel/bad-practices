@@ -1,0 +1,158 @@
+---
+layout: page
+title: Фиксированная высота и absolute для текстовых блоков
+---
+
+<ol>
+  <li>
+    <h3>Не задавайте текстовым блокам фиксированную высоту</h3>
+
+    <dl>
+      <dt>Почему?</dt>
+      <dd>
+        <p>При увеличении количества текста он вывалится наружу и может наложиться на соседние элементы.</p>
+      </dd>
+
+      <dt>Как это увидеть?</dt>
+      <dd>
+        <p>Чтобы не редактировать каждый раз исходный HTML, можно выполнить в консоли браузера такую команду:</p>
+
+        {% highlight js %}document.body.contentEditable = true{% endhighlight %}
+
+        <p>После этого вы сможете отредактировать любой текстовый элемент на странице и добавить в него текст.</p>
+
+        <p>Добавим текст:</p>
+
+        <figure class="figure figure--has-figcaption">
+          <img src="../assets/img/blocks-with-text/before.png">
+
+          <figcaption>При фиксированной высоте текст не может растянуть блок и вываливается.</figcaption>
+        </figure>
+      </dd>
+
+      <dt>А как надо?</dt>
+      <dd>
+        <p>Используйте <code>min-height</code>:</p>
+
+        <ul class="compare">
+          <li class="compare__item compare__item--bad">
+            <h4 class="compare__title">Плохо</h4>
+  {% highlight css %}.container {
+  height: 150px;
+  padding: 10px;
+}{% endhighlight %}
+    </li>
+    <li class="compare__item compare__item--good">
+      <h4 class="compare__title">Хорошо</h4>
+  {% highlight css %}.container {
+  min-height: 150px;
+  padding: 10px;
+}{% endhighlight %}
+          </li>
+        </ul>
+
+        <figure class="figure figure--has-figcaption">
+          <img src="../assets/img/blocks-with-text/after.png">
+
+          <figcaption><code>min-height</code> позволит добиться соответствия макету при вёрстке, а при добавлении контента блок просто вырастет вниз.</figcaption>
+        </figure>
+      </dd>
+    </dl>
+
+  </li>
+  <li>
+    <h3>Не используйте <code>absolute</code> для позиционирования текстовых блоков</h3>
+
+    <dl>
+      <dt>Почему?</dt>
+      <dd>
+        <p>При абсолютном позиционировании блок не влияет на размеры родителя. При увеличении количества текста он не сможет растянуть родительский блок и так же вывалится наружу.</p>
+      </dd>
+
+      <dt>Как это увидеть?</dt>
+      <dd>
+        <p>Как и в предыдущем случае, можно использовать команду в консоли:</p>
+
+        {% highlight js %}document.body.contentEditable = true{% endhighlight %}
+
+        <p>После чего добавить текст в интересующий элемент.</p>
+
+        <figure class="figure figure--has-figcaption">
+          <img src="../assets/img/blocks-with-text/content-abs-before.png">
+
+          <figcaption>Абсолютно спозиционированный элемент не может растянуть родительский блок.</figcaption>
+        </figure>
+      </dd>
+
+      <dt>А как надо?</dt>
+      <dd>
+        <p>В этом случае лучше перенести <code>position:absolute</code> на картинку и добавить <code>min-height</code>, чтобы блок не схлопывался по высоте текста (иначе может вывалиться картинка):</p>
+
+        <ul class="compare">
+          <li class="compare__item compare__item--bad">
+            <h4 class="compare__title">Плохо</h4>
+  {% highlight css %}.block {
+  position: relative;
+  display: flex;
+  width: 600px;
+  padding: 20px;
+}
+
+.block__content {
+  position: absolute;
+}
+
+.block__img {
+  margin-left: auto;
+}{% endhighlight %}
+        </li>
+        <li class="compare__item compare__item--good">
+          <h4 class="compare__title">Хорошо</h4>
+{% highlight css %}.block {
+  position: relative;
+  width: 600px;
+  min-height: 350px;
+  padding: 20px;
+}
+
+.block__content {
+  z-index: 1;
+}
+
+.block__img {
+  position: absolute;
+  right: 20px;
+}{% endhighlight %}
+          </li>
+        </ul>
+
+        <figure class="figure figure--has-figcaption">
+          <img src="../assets/img/blocks-with-text/content-abs-after-short.png">
+
+          <figcaption>Проверяем с коротким текстом: <code>min-height</code> не даёт блоку схлопнуться.</figcaption>
+        </figure>
+
+        <figure class="figure figure--has-figcaption">
+          <img src="../assets/img/blocks-with-text/content-abs-after-long.png">
+
+          <figcaption>Проверяем с длинным текстом: текст растягивает блок, и ничего не выпадает.</figcaption>
+        </figure>
+
+
+      </dd>
+    </dl>
+
+
+
+  </li>
+</ol>
+
+
+<div class="post__conclusion">
+  <h3>Итого</h3>
+
+  <ul>
+    <li>Не задавайте текстовым блокам фиксированную высоту, лучше использовать <code>min-height</code></li>
+    <li>По возможности, не используйте <code>absolute</code> для позиционирования текстовых блоков. Если текст должен наползать на картинку, лучше абсолютное позиционирование задать картинке.</li>
+  </ul>
+</div>

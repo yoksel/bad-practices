@@ -1,0 +1,150 @@
+---
+layout: page
+title: Не дублируйте стили текста
+---
+
+<p>Не нужно задавать разным элементам одинаковые стили текста.</p>
+
+<dl>
+<dt>Почему?</dt>
+<dd>
+  <p>Это не имеет смысла и засоряет код. Воспользуйтесь наследованием: стили текста дочерних элементов наследуются от родительского, вам не нужно для этого ничего делать.</p>
+</dd>
+
+<dt>Как это увидеть?</dt>
+<dd>
+  <p>В браузере в инструментах разработчика:</p>
+
+  <figure class="figure figure--has-figcaption">
+    <img src="../assets/img/font-styles/before.png">
+
+    <figcaption>Все перечёркнутые свойства были унаследованы, но затем перезаписаны точно такими же. Так делать не надо.</figcaption>
+  </figure>
+</dd>
+
+<dt>А как надо?</dt>
+<dd>
+  <p>  Стили текста достаточно задать один раз в <code>body</code>, и они автоматом применятся ко всем элементам страницы.</p>
+
+  <ul class="compare">
+    <li class="compare__item compare__item--bad">
+      <h4 class="compare__title">Плохо</h4>
+{% highlight css %}BODY {
+background: #FFF;
+}
+.page-main {
+font-family: Georgia, serif;
+font-size: 16px;
+line-height: 1.4;
+color: #333;
+}
+.news {
+font-family: Georgia, serif;
+font-size: 16px;
+line-height: 1.4;
+}
+.news-item {
+font-family: Georgia, serif;
+font-size: 16px;
+line-height: 1.4;
+color: #333;
+}
+.news-item__title {
+font-family: Georgia, serif;
+font-size: 20px;
+line-height: 1.4;
+color: #333;
+}
+.news-item__content {
+font-family: Georgia, serif;
+font-size: 16px;
+line-height: 1.4;
+color: #000;
+}{% endhighlight %}
+  </li>
+  <li class="compare__item compare__item--good">
+    <h4 class="compare__title">Хорошо</h4>
+{% highlight css %}BODY {
+background: #FFF;
+font-family: Georgia, serif;
+font-size: 16px;
+line-height: 1.4;
+color: #333;
+}
+.news-item__title {
+font-size: 20px;
+}
+.news-item__content {
+color: #000;
+}
+{% endhighlight %}
+    </li>
+  </ul>
+
+  <p>Исправленный код значительно короче, с ним удобнее иметь дело. Также не тратится время на написание ненужных свойств.</p>
+
+  <p>Как проверить, что всё работает как надо? Там же, в инструментах разработчика:</p>
+
+  <figure class="figure figure--has-figcaption">
+    <img src="../assets/img/font-styles/after.png">
+    <figcaption>На скриншоте видно, что стили текста унаследовались из <code>body</code>, а цвет фона — нет (он показан бледным)</figcaption>
+  </figure>
+
+  <p>Ещё один способ:</p>
+
+  <figure class="figure figure--has-figcaption">
+    <img src="../assets/img/font-styles/check.png">
+    <figcaption>Во вкладке Computed поищите конкретные свойства или посмотрите в Rendered Fonts — там показывается какой шрифт в итоге применился к тексту.</figcaption>
+  </figure>
+
+  <figure class="figure figure--has-figcaption">
+    <img src="../assets/img/font-styles/check-custom-font.png">
+    <figcaption>Там же можно проверить применился ли ваш красивый кастомный шрифт. Не смотря на то, что кастомный <code>MyFancyFont</code> объявлен в списке первым, текст в итоге отрисовался запасным — <code>Georgia</code>. Значит надо проверить правильно ли подключен кастомный шрифт.</figcaption>
+  </figure>
+
+  <p>Если для некоторых элементов стили текста отличаются, достаточно переопределить отдельные свойства, а не писать всё заново. Также снижается вероятность ошибки, если потребуется поменять шрифт на всём сайте: это можно будет сделать в одном месте.</p>
+</dd>
+
+<dt>Подводные камни</dt>
+<dd>
+  <p>Стили текста для инпутов и кнопок задаются браузером:</p>
+
+  <figure class="figure figure--has-figcaption">
+    <img src="../assets/img/font-styles/input.png">
+    <figcaption>Стили в <code>body</code> перечеркнуты, потому что перезаписаны стилями, который задаёт браузер — они отображаются на сером фоне, а в качестве источника указано <code>user&nbsp;agent&nbsp;stylesheet</code>.</figcaption>
+  </figure>
+
+  <figure class="figure figure--has-figcaption">
+    <img src="../assets/img/font-styles/input-computed.png">
+    <figcaption>В Rendered Fonts что-то совсем не то, что нужно.</figcaption>
+  </figure>
+
+
+  <p>Это легко поправить, задав наследование явно:</p>
+
+{% highlight css %}input, textarea, select, button {
+  font: inherit;
+}{% endhighlight %}
+
+  <p>Если нужно наследовать только семейство шрифтов, нужно вместо <code>font: inherit;</code> задать <code>font-family: inherit;</code></p>
+
+  <figure class="figure figure--has-figcaption">
+    <img src="../assets/img/font-styles/input-fixed.png">
+    <figcaption>Проверяем в Computed: <code>Georgia</code>.</figcaption>
+  </figure>
+
+  <figure class="figure figure--has-figcaption">
+    <img src="../assets/img/font-styles/input-fixed-expanded.png">
+    <figcaption>Там же можно увидеть что чем перезаписалось.</figcaption>
+  </figure>
+</dd>
+</dl>
+
+<div class="post__conclusion">
+  <h3>Итого</h3>
+
+  <ul>
+    <li>Не дублируйте стили текста, они наследуются.</li>
+    <li>Браузер перезаписывает стили для инпутов и кнопок, пропишите явное наследование.</li>
+  </ul>
+</div>

@@ -1,0 +1,59 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# jekyll serve --livereload — run server
+
+# Site settings
+title: 'HTML & CSS: как не надо'
+description: > # this means to ignore newlines until "baseurl:"
+  Ошибки при написаниии стилей и что с ними делать
+baseurl: '/bad-practices' # the subpath of your site, e.g. /blog
+
+# url: "http://yourdomain.com" # the base hostname & protocol for your site
+twitter_username: yoksel
+github_username:  yoksel
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# More › http://kramdown.gettalong.org/quickref.html
+# Options › http://kramdown.gettalong.org/options.html
+kramdown:
+  input:          GFM
+  # https://github.com/jekyll/jekyll/pull/4090
+  syntax_highlighter: rouge
+
+  # Rouge Highlighter in Kramdown › http://kramdown.gettalong.org/syntax_highlighter/rouge.html
+  # span, block element options fall back to global
+  syntax_highlighter_opts:
+    # Rouge Options › https://github.com/jneen/rouge#full-options
+    css_class: 'highlight'
+    #line_numbers: true # bad idea, spans don't need linenos and would inherit this option
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
+
+permalink: /title/
+
+menu:
+ - name: 'Введение'
+   url: '/'
+ - name: 'Стили текста'
+   url: '/font-styles/'
+ - name: 'Стили в медиавыражениях'
+   url: '/styles-in-mediaquery/'
+ - name: 'Блоки с текстом'
+   url: '/blocks-with-text/'
+
+socials:
+ - name: '@yoksel'
+   url: 'https://twitter.com/yoksel'
+ - name: 'Проект на GitHub'
+   url: 'https://github.com/yoksel/easy-css/'
