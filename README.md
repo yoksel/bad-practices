@@ -1,4 +1,4 @@
-# Подсказки по написанию CSS
+# HTML & CSS: как не надо
 
-https://yoksel.github.io/easy-css/
+https://yoksel.github.io/bad-practices/
 
