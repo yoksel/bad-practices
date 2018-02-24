@@ -1,0 +1,161 @@
+---
+layout: page
+title: Верстка форм
+
+---
+
+<!-- * display: none для инпутов
+
+* invalid для инпутов -->
+
+<ol>
+  <li>
+    <h3 id="div-h3">Не используйте для разметки групп инпутов <code>div</code> и <code>h1-h6</code></h3>
+
+    <dl>
+      <dt id="div-h3-why">Почему?</dt>
+      <dd>
+        <p>Для разметки групп полей есть более подходящие теги: <code>fieldset</code> и <code>legend</code>. Они не только внесут разнообразие в код, но также сделают вашу форму более доступной: скринридеры понимают эти теги.</p>
+
+        <p>Они смогут подсказать пользователю, что перед ним группа полей, объединенных по смыслу, и что у них есть общий заголовок.</p>
+
+        <p><code>fieldset</code> и <code>legend</code> могут вызывать затруднения при стилизации и позиционировании контента, но это легко решается дополнительными обёртками. </p>
+
+        <p>Например, так как <code>fieldset</code> используется для групп полей, а у каждого поля есть лейбл, каждой паре <code>input</code> + <code>label</code> обычно требуется обёртка, и здесь можно удобно использовать ненумерованные списки (<code>ul</code>). После этого можно всё позиционирование делать для списка и его элементов, и с раскладкой больше не будет никаких проблем.</p>
+
+        <p><code>legend</code> ведёт себя своеобразно, но его можно вырвать со своего места с помощью <code>float: left</code>, а для позиционирования текста внутри <code>legend</code> завернуть текст в спаны.</p>
+      </dd>
+
+      <dt id="div-h3-right-way">А как надо? <a href="#div-h3-right-way" class="post__anchor">#</a></dt>
+      <dd>
+
+        <p>Код слева — простой путь, код справа — более правильный:</p>
+        <ul class="compare">
+          <li class="compare__item compare__item--bad">
+            <h4 class="compare__title">Плохо</h4>
+{% highlight html %}<div>
+  <h3>Контакты</h3>
+
+  <label id="name">Имя</label>
+  <input type="text"
+         name="name"
+         id="name">
+
+  <label id="surname">Фамилия</label>
+  <input type="text"
+         name="surname"
+         id="surname">
+</div>{% endhighlight %}
+    </li>
+    <li class="compare__item compare__item--good">
+      <h4 class="compare__title">Хорошо</h4>
+{% highlight html %}<fieldset>
+  <legend>Контакты</legend>
+
+  <ul>
+    <li>
+      <label id="name">Имя</label>
+      <input type="text"
+             name="name"
+             id="name">
+    </li>
+    <li>
+      <label id="surname">Фамилия</label>
+      <input type="text"
+             name="surname"
+             id="surname">
+    </li>
+  </ul>
+</fieldset>{% endhighlight %}
+          </li>
+        </ul>
+      </dd>
+    </dl>
+
+  </li>
+  <li>
+    <h3 id="legend-label">Не используйте <code>legend</code> вместо <code>label</code></h3>
+
+    <dl>
+      <dt id="legend-label-why">Почему?</dt>
+      <dd>
+        <p>В некоторых макетах можно увидеть, что название для <code>textarea</code> выглядит как <code>legend</code>, и возникает соблазн поместить <code>textarea</code> в <code>fieldset</code>, а название поля поместить в <code>legend</code>.</p>
+
+        <p>Это будет не самым правильными решением, потому что у всех инпутов должны быть лейблы. Если добавить скрытый лейбл, его содержимое будет дублировать уже имеющийся <code>legend</code>, и всё это вместе будет выглядеть довольно странно.</p>
+      </dd>
+
+      <dt id="legend-label-how-to-see">Как это увидеть? <a href="#legend-label-how-to-see" class="post__anchor">#</a></dt>
+      <dd>
+        <p>Посмотрите на страницу без стилей:</p>
+
+        <figure class="figure figure--has-figcaption">
+          <img src="../assets/img/forms-markup/textarea-in-fieldset.png">
+
+          <figcaption>Название поля два раза два раза</figcaption>
+        </figure>
+
+      </dd>
+
+      <dt id="legend-label-right-way">А как надо? <a href="#legend-label-right-way" class="post__anchor">#</a></dt>
+      <dd>
+        <p>Для одиночного текстового поля не нужны <code>fieldset</code> и <code>legend</code>, они для групп полей. Если такому полю требуется обёртка, можно использовать <code>div</code>. Название поля нужно поместить в <code>label</code>.</p>
+
+        <p>Если стилизация <code>legend</code> не привязана к тегу, вы без проблем можете использовать эти же стили (а лучше класс) для стилизации лейбла.</p>
+
+        <ul class="compare">
+          <li class="compare__item compare__item--bad">
+            <h4 class="compare__title">Плохо</h4>
+{% highlight html %}<fieldset class="form-group">
+  <legend class="form-group__title">
+    Опишите привычки кота
+  </legend>
+  <label class="form-group__label
+                visually-hidden"
+         for="cat-habits">
+    Опишите привычки кота
+  </label>
+
+  <textarea class="form-group__textarea"
+            id="cat-habits"
+            placeholder="Введите текст"
+            ></textarea>
+</fieldset>{% endhighlight %}
+        </li>
+        <li class="compare__item compare__item--good">
+          <h4 class="compare__title">Хорошо</h4>
+{% highlight html %}<div class="form-group">
+  <label class="form-group__title"
+         for="cat-habits">
+    Опишите привычки кота
+  </label>
+
+  <textarea class="form-group__textarea"
+            id="cat-habits"
+            placeholder="Введите текст"
+            ></textarea>
+</div>{% endhighlight %}
+          </li>
+        </ul>
+
+        <figure class="figure figure--has-figcaption">
+          <img src="../assets/img/forms-markup/textarea-after.png">
+
+          <figcaption>Теперь ничего не дублируется.</figcaption>
+        </figure>
+
+      </dd>
+    </dl>
+  </li>
+
+
+</ol>
+
+
+<div class="post__conclusion">
+  <h3 id="conclusion" class="post__conclusion-title">Итого</h3>
+
+  <ul class="post__conclusion-list">
+    <li>Не используйте для разметки групп инпутов <code>div</code> и <code>h1-h6</code>, есть более подходящие теги: <code>fieldset</code> и <code>legend</code>.</li>
+    <li>Не используйте <code>legend</code> вместо <code>label</code> для одиночного поля, ему не нужны <code>fieldset</code> и <code>legend</code>, достаточно <code>div</code> и <code>label</code>.</li>
+  </ul>
+</div>

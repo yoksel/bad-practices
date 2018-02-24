@@ -51,6 +51,8 @@ menu:
    url: '/styles-in-mediaquery/'
  - name: 'Блоки с текстом'
    url: '/blocks-with-text/'
+ - name: 'Верстка форм'
+   url: '/forms-markup/'
 
 socials:
  - name: '@yoksel'

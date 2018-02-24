@@ -2,3 +2,5 @@
 
 https://yoksel.github.io/bad-practices/
 
+_(Сайт в процессе разработки)_
+
