@@ -10,7 +10,7 @@
 # Site settings
 title: 'HTML & CSS: как не надо'
 description: > # this means to ignore newlines until "baseurl:"
-  Ошибки при написаниии стилей и что с ними делать
+  Ошибки при создании разметки и что с ними делать
 baseurl: '/bad-practices' # the subpath of your site, e.g. /blog
 
 # url: "http://yourdomain.com" # the base hostname & protocol for your site
