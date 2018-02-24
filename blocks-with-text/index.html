@@ -1,19 +1,25 @@
 ---
 layout: page
 title: Фиксированная высота и absolute для текстовых блоков
+
+links:
+- name: "Не задавайте текстовым блокам фиксированную высоту"
+  url: "#fixed-height-why"
+- name: "Не используйте <code>absolute</code> для позиционирования текстовых блоков"
+  url: "#absolute"
 ---
 
 <ol>
   <li>
-    <h3>Не задавайте текстовым блокам фиксированную высоту</h3>
+    <h3 id="fixed-height">Не задавайте текстовым блокам фиксированную высоту <a href="#fixed-height" class="post__anchor">#</a></h3>
 
     <dl>
-      <dt>Почему?</dt>
+      <dt id="fixed-height-why">Почему? <a href="#fixed-height-why" class="post__anchor">#</a></dt>
       <dd>
         <p>При увеличении количества текста он вывалится наружу и может наложиться на соседние элементы.</p>
       </dd>
 
-      <dt>Как это увидеть?</dt>
+      <dt id="fixed-height-how-to-see">Как это увидеть? <a href="#fixed-height-how-to-see" class="post__anchor">#</a></dt>
       <dd>
         <p>Чтобы не редактировать каждый раз исходный HTML, можно выполнить в консоли браузера такую команду:</p>
 
@@ -30,7 +36,7 @@ title: Фиксированная высота и absolute для текстов
         </figure>
       </dd>
 
-      <dt>А как надо?</dt>
+      <dt id="fixed-height-right-way">А как надо? <a href="#fixed-height-right-way" class="post__anchor">#</a></dt>
       <dd>
         <p>Используйте <code>min-height</code>:</p>
 
@@ -61,15 +67,15 @@ title: Фиксированная высота и absolute для текстов
 
   </li>
   <li>
-    <h3>Не используйте <code>absolute</code> для позиционирования текстовых блоков</h3>
+    <h3 id="absolute">Не используйте <code>absolute</code> для позиционирования текстовых блоков <a href="#absolute" class="post__anchor">#</a> </h3>
 
     <dl>
-      <dt>Почему?</dt>
+      <dt id="absolute-why">Почему? <a href="#absolute-why" class="post__anchor">#</a></dt>
       <dd>
-        <p>При абсолютном позиционировании блок не влияет на размеры родителя. При увеличении количества текста он не сможет растянуть родительский блок и так же вывалится наружу.</p>
+        <p>При абсолютном позиционировании блок не влияет на размеры родителя. При увеличении количества текста он не сможет растянуть родительский блок и вывалится наружу.</p>
       </dd>
 
-      <dt>Как это увидеть?</dt>
+      <dt id="absolute-how-to-see">Как это увидеть? <a href="#absolute-how-to-see" class="post__anchor">#</a></dt>
       <dd>
         <p>Как и в предыдущем случае, можно использовать команду в консоли:</p>
 
@@ -84,7 +90,7 @@ title: Фиксированная высота и absolute для текстов
         </figure>
       </dd>
 
-      <dt>А как надо?</dt>
+      <dt id="absolute-right-way">А как надо? <a href="#absolute-right-way" class="post__anchor">#</a></dt>
       <dd>
         <p>В этом случае лучше перенести <code>position:absolute</code> на картинку и добавить <code>min-height</code>, чтобы блок не схлопывался по высоте текста (иначе может вывалиться картинка):</p>
 
@@ -97,11 +103,9 @@ title: Фиксированная высота и absolute для текстов
   width: 600px;
   padding: 20px;
 }
-
 .block__content {
   position: absolute;
 }
-
 .block__img {
   margin-left: auto;
 }{% endhighlight %}
@@ -114,11 +118,9 @@ title: Фиксированная высота и absolute для текстов
   min-height: 350px;
   padding: 20px;
 }
-
 .block__content {
   z-index: 1;
 }
-
 .block__img {
   position: absolute;
   right: 20px;
@@ -138,21 +140,17 @@ title: Фиксированная высота и absolute для текстов
           <figcaption>Проверяем с длинным текстом: текст растягивает блок, и ничего не выпадает.</figcaption>
         </figure>
 
-
       </dd>
     </dl>
-
-
-
   </li>
 </ol>
 
 
 <div class="post__conclusion">
-  <h3>Итого</h3>
+  <h3 id="conclusion" class="post__conclusion-title">Итого</h3>
 
-  <ul>
-    <li>Не задавайте текстовым блокам фиксированную высоту, лучше использовать <code>min-height</code></li>
-    <li>По возможности, не используйте <code>absolute</code> для позиционирования текстовых блоков. Если текст должен наползать на картинку, лучше абсолютное позиционирование задать картинке.</li>
+  <ul class="post__conclusion-list">
+    <li>Не задавайте текстовым блокам фиксированную высоту, лучше использовать <code>min-height</code>.</li>
+    <li>По возможности, не используйте <code>absolute</code> для позиционирования текстовых блоков. Если текст должен наползать на картинку, абсолютное позиционирование лучше задать картинке.</li>
   </ul>
 </div>

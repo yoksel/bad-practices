@@ -1,32 +1,40 @@
 ---
 layout: page
 title: Не дублируйте стили в медиавыражениях
+
+links:
+- url: "#why"
+  name: "Почему? "
+- url: "#how-to-see"
+  name: "Как это увидеть?"
+- url: "#right-way"
+  name: "А как надо?"
 ---
 
 <dl>
-<dt>Почему?</dt>
-<dd>
-  <p>Использование медиавыражений не сбрасывает предыдущие стили</p>
-</dd>
+  <dt id="why">Почему? <a href="#why" class="post__anchor">#</a></dt>
+  <dd>
+    <p>Использование медиавыражений не сбрасывает предыдущие стили</p>
+  </dd>
 
-<dt>Как это увидеть?</dt>
-<dd>
-  <p>В браузере в инструментах разработчика:</p>
+  <dt id="how-to-see">Как это увидеть? <a href="#how-to-see" class="post__anchor">#</a></dt>
+  <dd>
+    <p>В браузере в инструментах разработчика:</p>
 
-  <figure class="figure figure--has-figcaption">
-    <img src="../assets/img/mediaqueries/before.png">
+    <figure class="figure figure--has-figcaption">
+      <img src="../assets/img/mediaqueries/before.png">
 
-    <figcaption>Все перечёркнутые свойства были унаследованы, но затем были перезаписаны, хотя некоторые значения остались теми же.</figcaption>
-  </figure>
-</dd>
+      <figcaption>Все перечёркнутые свойства были унаследованы, но затем были перезаписаны, хотя некоторые значения остались теми же.</figcaption>
+    </figure>
+  </dd>
 
-<dt>А как надо?</dt>
-<dd>
-  <p>В медиавыражение добавляйте только свойства, которые меняются:</p>
+  <dt id="right-way">А как надо? <a href="#right-way" class="post__anchor">#</a></dt>
+  <dd>
+    <p>В медиавыражение добавляйте только те свойства, которые меняются:</p>
 
-  <ul class="compare">
-    <li class="compare__item compare__item--bad">
-      <h4 class="compare__title">Плохо</h4>
+    <ul class="compare">
+      <li class="compare__item compare__item--bad">
+        <h4 class="compare__title">Плохо</h4>
 {% highlight css %}.news-item__title {
   margin-bottom: 30px;
   padding-bottom: 5px;
@@ -35,7 +43,7 @@ title: Не дублируйте стили в медиавыражениях
   font-size: 22px;
   line-height: 1.4;
   color: #000;
-  }
+}
 
 @media (min-width: 600px) {
   .news-item__title {
@@ -48,9 +56,9 @@ title: Не дублируйте стили в медиавыражениях
     color: #000;
   }
 }{% endhighlight %}
-  </li>
-  <li class="compare__item compare__item--good">
-    <h4 class="compare__title">Хорошо</h4>
+    </li>
+    <li class="compare__item compare__item--good">
+      <h4 class="compare__title">Хорошо</h4>
 {% highlight css %}.news-item__title {
   margin-bottom: 30px;
   padding-bottom: 5px;
@@ -67,14 +75,15 @@ title: Не дублируйте стили в медиавыражениях
     font-size: 24px;
   }
 }{% endhighlight %}
-    </li>
-  </ul>
+      </li>
+    </ul>
 
-  <p>Такой код быстрее писать и проще поддерживать.</p>
-</dd>
+    <p>Такой код быстрее писать и проще поддерживать.</p>
+  </dd>
+</dl>
 
 <div class="post__conclusion">
-  <h3>Итого</h3>
+  <h3 class="post__conclusion-title">Итого</h3>
 
-  <p>Медиавыражения не сбрасывают стили. Добавляйте в них только те свойства, которые нужно переопределить.</p>
+  <p class="post__conclusion-text">Медиавыражения не сбрасывают стили. Добавляйте в них только те свойства, которые нужно переопределить.</p>
 </div>
