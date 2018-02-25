@@ -1,0 +1,113 @@
+$color-input: #DDD;
+$color-input-hover: #999;
+$color-input-focus: lightseagreen;
+
+.form-example {
+  border: 2px solid #DDD;
+  padding: 20px;
+  max-width: 350px;
+}
+
+.form-example__group {
+  margin: 20px 0;
+  padding: 0;
+  border: none;
+}
+
+.form-example__title {
+  float: left;
+  width: 100%;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.form-example__list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  clear: both;
+  display: flex;
+  flex-wrap: wrap;
+}
+.form-example__item {
+  margin-bottom: 10px;
+  flex-basis: 50%;
+  display: flex;
+}
+
+.form-example__label {
+  display: block;
+  position: relative;
+
+  &--text {
+    font-weight: bold;
+  }
+
+  &--radio {
+   padding-right: 10px;
+  }
+    &--radio::before {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      width: 30px;
+      height: 30px;
+      margin-right: 5px;
+      border-radius: 50%;
+      border: 2px solid $color-input;
+      transition: all .15s;
+    }
+    &--radio:hover::before {
+      border-color: $color-input-hover;
+    }
+    .form-example__input--radio:checked + &::before {
+      background: radial-gradient(black 8px, transparent 9px);
+    }
+
+    .form-example__input--radio:active + &::before,
+    .form-example__input--radio:focus + &::before {
+      border-color: $color-input-focus;
+    }
+}
+
+.form-example__input {
+  font: inherit;
+  font-weight: normal;
+
+  &--text {
+    margin-left: 10px;
+    border: 2px solid $color-input;
+    outline: none;
+  }
+  &--text:hover {
+    border-color: $color-input-hover;
+  }
+  &--text:focus {
+    border-color: $color-input-focus;
+  }
+}
+
+ .form-example--display-none {
+  .form-example__input--radio {
+    display: none;
+  }
+ }
+
+.form-example__button {
+  margin-top: 20px;
+  background: #333;
+  padding: 5px 30px;
+  border: none;
+  border-radius: 5px;
+  color: #FFF;
+  font: inherit;
+  cursor: pointer;
+
+  &:hover {
+    background: #555;
+  }
+  &:focus {
+    background: $color-input-focus;
+    outline: none;
+  }
+}
