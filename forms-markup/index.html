@@ -2,46 +2,49 @@
 layout: page
 title: Верстка форм
 
+links:
+- url: "#div-h3"
+  name: "Не используйте для разметки групп инпутов <code>div</code> и <code>h1-h6</code>"
+- url: "#legend-label"
+  name: "Не используйте <code>legend</code> вместо <code>label</code>"
+- url: "#hidden-inputs"
+  name: "Не используйте <code>display: none</code> для скрытия инпутов"
 ---
 
-<!-- * display: none для инпутов
-
+<!--
 * invalid для инпутов -->
 
 <ol>
   <li>
-    <h3 id="div-h3">Не используйте для разметки групп инпутов <code>div</code> и <code>h1-h6</code></h3>
+    <h3 id="div-h3">Не используйте для разметки групп инпутов <code>div</code> и <code>h1-h6</code> <a href="#div-h3" class="post__anchor">#</a></h3>
 
     <dl>
-      <dt id="div-h3-why">Почему?</dt>
+      <dt id="div-h3-why">Почему? <a href="#div-h3-why" class="post__anchor">#</a></dt>
       <dd>
-        <p>Для разметки групп полей есть более подходящие теги: <code>fieldset</code> и <code>legend</code>. Они не только внесут разнообразие в код, но также сделают вашу форму более доступной: скринридеры понимают эти теги.</p>
-
-        <p>Они смогут подсказать пользователю, что перед ним группа полей, объединенных по смыслу, и что у них есть общий заголовок.</p>
-
-        <p><code>fieldset</code> и <code>legend</code> могут вызывать затруднения при стилизации и позиционировании контента, но это легко решается дополнительными обёртками. </p>
-
-        <p>Например, так как <code>fieldset</code> используется для групп полей, а у каждого поля есть лейбл, каждой паре <code>input</code> + <code>label</code> обычно требуется обёртка, и здесь можно удобно использовать ненумерованные списки (<code>ul</code>). После этого можно всё позиционирование делать для списка и его элементов, и с раскладкой больше не будет никаких проблем.</p>
-
-        <p><code>legend</code> ведёт себя своеобразно, но его можно вырвать со своего места с помощью <code>float: left</code>, а для позиционирования текста внутри <code>legend</code> завернуть текст в спаны.</p>
+        <p>Для разметки групп полей есть более подходящие теги: <code>fieldset</code> и <code>legend</code>. Они не только внесут разнообразие в код, но также сделают вашу форму более доступной.
       </dd>
 
       <dt id="div-h3-right-way">А как надо? <a href="#div-h3-right-way" class="post__anchor">#</a></dt>
       <dd>
 
-        <p>Код слева — простой путь, код справа — более правильный:</p>
+        <p>С чистыми <code>fieldset</code> и <code>legend</code> могут возникать затруднения при стилизации и позиционировании контента, но это легко решается дополнительными обёртками.</p>
+
+        <p>Например, так как <code>fieldset</code> используется для групп полей, а у каждого поля есть лейбл, каждой паре <code>input</code> + <code>label</code> обычно требуется обёртка, и здесь можно удобно использовать ненумерованные списки (<code>ul</code>). После этого можно всё позиционирование делать для списка и его элементов, и с раскладкой больше не будет никаких проблем. Чтобы вместе с инпутом не читалась информация об элементах списка, его нужно скрыть от скринридеров, задав <code> role="none"</code>.</p>
+
+        <p><code>legend</code> ведёт себя своеобразно, но его можно вырвать со своего места с помощью <code>float: left</code>, а для позиционирования текста внутри <code>legend</code> завернуть текст в спаны.</p>
+
         <ul class="compare">
           <li class="compare__item compare__item--bad">
             <h4 class="compare__title">Плохо</h4>
 {% highlight html %}<div>
   <h3>Контакты</h3>
 
-  <label id="name">Имя</label>
+  <label for="name">Имя</label>
   <input type="text"
          name="name"
          id="name">
 
-  <label id="surname">Фамилия</label>
+  <label for="surname">Фамилия</label>
   <input type="text"
          name="surname"
          id="surname">
@@ -52,15 +55,15 @@ title: Верстка форм
 {% highlight html %}<fieldset>
   <legend>Контакты</legend>
 
-  <ul>
+  <ul role="none">
     <li>
-      <label id="name">Имя</label>
+      <label for="name">Имя</label>
       <input type="text"
              name="name"
              id="name">
     </li>
     <li>
-      <label id="surname">Фамилия</label>
+      <label for="surname">Фамилия</label>
       <input type="text"
              name="surname"
              id="surname">
@@ -69,15 +72,17 @@ title: Верстка форм
 </fieldset>{% endhighlight %}
           </li>
         </ul>
+
+
       </dd>
     </dl>
 
   </li>
   <li>
-    <h3 id="legend-label">Не используйте <code>legend</code> вместо <code>label</code></h3>
+    <h3 id="legend-label">Не используйте <code>legend</code> вместо <code>label</code> <a href="#legend-label" class="post__anchor">#</a></h3>
 
     <dl>
-      <dt id="legend-label-why">Почему?</dt>
+      <dt id="legend-label-why">Почему? <a href="#legend-label-why" class="post__anchor">#</a></dt>
       <dd>
         <p>В некоторых макетах можно увидеть, что название для <code>textarea</code> выглядит как <code>legend</code>, и возникает соблазн поместить <code>textarea</code> в <code>fieldset</code>, а название поля поместить в <code>legend</code>.</p>
 
@@ -86,14 +91,25 @@ title: Верстка форм
 
       <dt id="legend-label-how-to-see">Как это увидеть? <a href="#legend-label-how-to-see" class="post__anchor">#</a></dt>
       <dd>
-        <p>Посмотрите на страницу без стилей:</p>
+        <p>Посмотрите на форму без стилей:</p>
 
-        <figure class="figure figure--has-figcaption">
-          <img src="../assets/img/forms-markup/textarea-in-fieldset.png">
-
-          <figcaption>Название поля два раза два раза</figcaption>
-        </figure>
-
+        <form class="form-example">
+          <fieldset class="form-group">
+            <legend class="form-group__title">
+              Опишите привычки кота
+            </legend>
+            <label class="form-group__label
+                          visually-hidden"
+                   for="cat-habits">
+              Опишите привычки кота
+            </label>
+            <br>
+            <textarea class="form-group__textarea"
+                      id="cat-habits"
+                      placeholder="Введите текст"
+                      ></textarea>
+          </fieldset>
+        </form>
       </dd>
 
       <dt id="legend-label-right-way">А как надо? <a href="#legend-label-right-way" class="post__anchor">#</a></dt>
@@ -137,17 +153,246 @@ title: Верстка форм
           </li>
         </ul>
 
-        <figure class="figure figure--has-figcaption">
-          <img src="../assets/img/forms-markup/textarea-after.png">
+        <p>Теперь ничего не дублируется:</p>
 
-          <figcaption>Теперь ничего не дублируется.</figcaption>
-        </figure>
+        <form class="form-example">
+          <div class="form-group">
+            <label class="form-group__title"
+                   for="cat-habits-2">
+              Опишите привычки кота
+            </label>
+            <br>
+            <textarea class="form-group__textarea"
+                      id="cat-habits-2"
+                      placeholder="Введите текст"
+                      ></textarea>
+          </div>
+        </form>
 
       </dd>
     </dl>
   </li>
 
+  <li>
+    <h3 id="hidden-inputs">Не используйте <code>display: none</code> для скрытия инпутов <a href="#hidden-inputs" class="post__anchor">#</a></h3>
 
+    <dl>
+      <dt id="hidden-inputs-why">Почему? <a href="#hidden-inputs-why" class="post__anchor">#</a></dt>
+      <dd>
+        <p>Инпуты, спрятанные таким образом, становятся полностью недоступны для скринридеров и навигации с клавиатуры</p>
+      </dd>
+
+      <dt id="hidden-inputs-how-to-see">Как это увидеть? <a href="#hidden-inputs-how-to-see" class="post__anchor">#</a></dt>
+      <dd>
+        <p>Установите фокус в первое поле и попробуйте перемещаясь по форме с помощью <code>Tab</code> и стрелок выбрать цвет кота:</p>
+
+        <form class="form-example form-example--display-none"
+          action="https://htmlacademy.ru/echo">
+          <label
+            class="form-example__label form-example__label--text">
+            Имя кота
+            <input
+              type="text"
+              name="name"
+              class="form-example__input form-example__input--text">
+          </label>
+
+          <fieldset class="form-example__group">
+            <legend class="form-example__title">Цвет кота</legend>
+
+            <ul class="form-example__list">
+              <li class="form-example__item">
+                <input
+                  type="radio"
+                  name="color"
+                  value="black"
+                  id="color-black"
+                  class="form-example__input form-example__input--radio">
+                <label
+                  class="form-example__label form-example__label--radio"
+                  for="color-black">
+                    Черный
+                </label>
+              </li>
+              <li class="form-example__item">
+                <input type="radio"
+                  name="color"
+                  value="ginger"
+                  id="color-ginger"
+                  class="form-example__input form-example__input--radio">
+                <label
+                  class="form-example__label form-example__label--radio"
+                  for="color-ginger">
+                  Рыжий
+                </label>
+              </li>
+              <li class="form-example__item">
+                <input
+                  type="radio"
+                  name="color"
+                  value="white"
+                  id="color-white"
+                  class="form-example__input form-example__input--radio">
+                <label
+                  class="form-example__label form-example__label--radio"
+                  for="color-white">
+                   Белый
+                </label>
+              </li>
+              <li class="form-example__item">
+                <input
+                  type="radio"
+                  name="color"
+                  value="mixed"
+                  id="color-mixed"
+                  class="
+                    form-example__input
+                    form-example__input--radio
+                    visuallyhidden">
+                <label
+                  class="form-example__label form-example__label--radio"
+                  for="color-mixed">
+                   Все цвета сразу
+                </label>
+              </li>
+            </ul>
+          </fieldset>
+
+          <label
+            class="form-example__label form-example__label--text">
+            Любимые игрушки
+            <input
+              type="text"
+              name="toys"
+              class="form-example__input form-example__input--text">
+          </label>
+
+          <button class="form-example__button">Жми</button>
+        </form>
+
+        <p>Ничего не получится, с клавиатуры выбор цвета недоступен.</p>
+
+      </dd>
+
+      <dt id="hidden-inputs-right-way">А как надо? <a href="#hidden-inputs-right-way" class="post__anchor">#</a></dt>
+      <dd>
+        <p>Для скрытия инпутов используйте класс <code>.visuallyhidden</code>:</p>
+
+{% highlight css %}.visuallyhidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}{% endhighlight %}
+
+        <p>Это скроет инпут для обычных пользователей, но оставит его доступным для скринридеров. Почитать подробнее можно <a href="https://allyjs.io/tutorials/hiding-elements.html#how-to-hide-elements-visually">тут</a>.</p>
+
+        <p>Попробуйте теперь с помощью <code>Tab</code> и стрелок выбрать цвет кота (чтобы выбрать цвет нажмите пробел):</p>
+
+        <form class="form-example form-example--vis-hidden"
+          action="https://htmlacademy.ru/echo">
+          <label
+            class="form-example__label form-example__label--text">
+            Имя кота
+            <input
+              type="text"
+              name="name"
+              class="form-example__input form-example__input--text">
+          </label>
+
+          <fieldset class="form-example__group">
+            <legend class="form-example__title">Цвет кота</legend>
+
+            <ul class="form-example__list">
+              <li class="form-example__item">
+                <input
+                  type="radio"
+                  name="color"
+                  value="black"
+                  id="color-2-black"
+                  class="
+                    form-example__input
+                    form-example__input--radio
+                    visuallyhidden">
+                <label
+                  class="form-example__label form-example__label--radio"
+                  for="color-2-black">
+                    Черный
+                </label>
+              </li>
+              <li class="form-example__item">
+                <input type="radio"
+                  name="color"
+                  value="ginger"
+                  id="color-2-ginger"
+                  class="
+                    form-example__input
+                    form-example__input--radio
+                    visuallyhidden">
+                <label
+                  class="form-example__label form-example__label--radio"
+                  for="color-2-ginger">
+                  Рыжий
+                </label>
+              </li>
+              <li class="form-example__item">
+                <input
+                  type="radio"
+                  name="color"
+                  value="white"
+                  id="color-2-white"
+                  class="
+                    form-example__input
+                    form-example__input--radio
+                    visuallyhidden">
+                <label
+                  class="form-example__label form-example__label--radio"
+                  for="color-2-white">
+                   Белый
+                </label>
+              </li>
+              <li class="form-example__item">
+                <input
+                  type="radio"
+                  name="color"
+                  value="mixed"
+                  id="color-2-mixed"
+                  class="
+                    form-example__input
+                    form-example__input--radio
+                    visuallyhidden">
+                <label
+                  class="form-example__label form-example__label--radio"
+                  for="color-2-mixed">
+                   Все цвета сразу
+                </label>
+              </li>
+            </ul>
+          </fieldset>
+
+          <label
+            class="form-example__label form-example__label--text">
+            Любимые игрушки
+            <input
+              type="text"
+              name="toys"
+              class="form-example__input form-example__input--text">
+          </label>
+
+          <button class="form-example__button">Жми</button>
+        </form>
+
+        <p>Всё работает.</p>
+
+      </dd>
+    </dl>
+  </li>
 </ol>
 
 
@@ -157,5 +402,6 @@ title: Верстка форм
   <ul class="post__conclusion-list">
     <li>Не используйте для разметки групп инпутов <code>div</code> и <code>h1-h6</code>, есть более подходящие теги: <code>fieldset</code> и <code>legend</code>.</li>
     <li>Не используйте <code>legend</code> вместо <code>label</code> для одиночного поля, ему не нужны <code>fieldset</code> и <code>legend</code>, достаточно <code>div</code> и <code>label</code>.</li>
+    <li>Не используйте <code>display: none</code> для скрытия инпутов, они становятся недоступны для скринридеров и навигации с клавиатуры. Скрывайте с помощью <code>.visuallyhidden</code></li>
   </ul>
 </div>
