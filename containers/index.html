@@ -29,15 +29,15 @@ links:
 
     <p>И посмотрим в браузере что получилось. Начнём с мобильных:</p>
 
-    <img src="../assets/img/containers/before-mobile.png">
+    <img src="../assets/img/containers/before-mobile.png" alt="Контейнер с фиксированной шириной на мобильных">
 
     <p>На мобильных всё как надо. Десктоп:</p>
 
-    <img src="../assets/img/containers/before-desktop.png">
+    <img src="../assets/img/containers/before-desktop.png" alt="Контейнер с фиксированной шириной на десктопе">
 
     <p>На десктопе появилась не только вертикальная прокрутка, но и горизонтальная. Почему?</p>
 
-    <img src="../assets/img/containers/before-body.png">
+    <img src="../assets/img/containers/before-body.png" alt="body содержащий контейнер с фиксированной шириной на десктопе">
 
     <p>Потому что вертикальная прокрутка отъела часть ширины окна, и для контента осталось меньше места.</p>
 
@@ -57,7 +57,7 @@ links:
 
         <ul class="compare">
           <li class="compare__item compare__item--bad">
-            <h4 class="compare__title">Плохо</h4>
+            <div class="compare__title">Плохо</div>
 {% highlight css %}@media (min-width: 600px) {
   .container {
     width: 600px;
@@ -65,7 +65,7 @@ links:
 }{% endhighlight %}
         </li>
         <li class="compare__item compare__item--good">
-          <h4 class="compare__title">Хорошо</h4>
+          <div class="compare__title">Хорошо</div>
 {% highlight css %}@media (min-width: 600px) {
   .container {
     width: 500px;
@@ -86,7 +86,7 @@ links:
 
         <ul class="compare">
           <li class="compare__item compare__item--bad">
-            <h4 class="compare__title">Плохо</h4>
+            <div class="compare__title">Плохо</div>
 {% highlight css %}@media (min-width: 600px) {
   .container {
     width: 600px;
@@ -94,7 +94,7 @@ links:
 }{% endhighlight %}
         </li>
         <li class="compare__item compare__item--good">
-          <h4 class="compare__title">Хорошо</h4>
+          <div class="compare__title">Хорошо</div>
 {% highlight css %}@media (min-width: 600px) {
   .container {
     padding: 50px;

@@ -30,7 +30,7 @@ links:
         <p>Добавим текст:</p>
 
         <figure class="figure figure--has-figcaption">
-          <img src="../assets/img/blocks-with-text/before.png">
+          <img src="../assets/img/blocks-with-text/before.png" alt="При фиксированной ширине текст выпадает из родительского блока">
 
           <figcaption>При фиксированной высоте текст не может растянуть блок и вываливается.</figcaption>
         </figure>
@@ -42,14 +42,14 @@ links:
 
         <ul class="compare">
           <li class="compare__item compare__item--bad">
-            <h4 class="compare__title">Плохо</h4>
+            <div class="compare__title">Плохо</div>
   {% highlight css %}.container {
   height: 150px;
   padding: 10px;
 }{% endhighlight %}
     </li>
     <li class="compare__item compare__item--good">
-      <h4 class="compare__title">Хорошо</h4>
+      <div class="compare__title">Хорошо</div>
   {% highlight css %}.container {
   min-height: 150px;
   padding: 10px;
@@ -58,7 +58,7 @@ links:
         </ul>
 
         <figure class="figure figure--has-figcaption">
-          <img src="../assets/img/blocks-with-text/after.png">
+          <img src="../assets/img/blocks-with-text/after.png" alt="С min-height текст не выпадает из родителя">
 
           <figcaption><code>min-height</code> позволит добиться соответствия макету при вёрстке, а при добавлении контента блок просто вырастет вниз.</figcaption>
         </figure>
@@ -84,7 +84,7 @@ links:
         <p>После чего добавить текст в интересующий элемент.</p>
 
         <figure class="figure figure--has-figcaption">
-          <img src="../assets/img/blocks-with-text/content-abs-before.png">
+          <img src="../assets/img/blocks-with-text/content-abs-before.png" alt="Абсолютно спозиционированный элемент не растягивает родителя">
 
           <figcaption>Абсолютно спозиционированный элемент не может растянуть родительский блок.</figcaption>
         </figure>
@@ -96,7 +96,7 @@ links:
 
         <ul class="compare">
           <li class="compare__item compare__item--bad">
-            <h4 class="compare__title">Плохо</h4>
+            <div class="compare__title">Плохо</div>
   {% highlight css %}.block {
   position: relative;
   display: flex;
@@ -111,7 +111,7 @@ links:
 }{% endhighlight %}
         </li>
         <li class="compare__item compare__item--good">
-          <h4 class="compare__title">Хорошо</h4>
+          <div class="compare__title">Хорошо</div>
 {% highlight css %}.block {
   position: relative;
   width: 600px;
@@ -130,13 +130,13 @@ links:
         </ul>
 
         <figure class="figure figure--has-figcaption">
-          <img src="../assets/img/blocks-with-text/content-abs-after-short.png">
+          <img src="../assets/img/blocks-with-text/content-abs-after-short.png" alt="min-height не даёт блоку схлопнуться, если текста мало">
 
           <figcaption>Проверяем с коротким текстом: <code>min-height</code> не даёт блоку схлопнуться.</figcaption>
         </figure>
 
         <figure class="figure figure--has-figcaption">
-          <img src="../assets/img/blocks-with-text/content-abs-after-long.png">
+          <img src="../assets/img/blocks-with-text/content-abs-after-long.png" alt="Длинный текст растягивает блок">
 
           <figcaption>Проверяем с длинным текстом: текст растягивает блок, и ничего не выпадает.</figcaption>
         </figure>
