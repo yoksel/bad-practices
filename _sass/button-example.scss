@@ -1,0 +1,32 @@
+.button-example {
+  min-width: 130px;
+  max-width: 140px;
+  min-height: 45px;
+  padding: 0;
+  margin: 0 20px 10px 0;
+  vertical-align: middle;
+  background: yellowgreen;
+  border: 3px solid rgba(0,0,0,.15);
+  border-radius: 5px;
+  font: inherit;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.2;
+  color: rgba(0,0,0,.55);
+
+  &:hover {
+    color: rgba(0,0,0,.75);
+  }
+}
+
+.button-example--hp {
+  padding: 10px 0;
+}
+
+.button-example--vp {
+  padding: 0 10px;
+}
+
+.button-example--p {
+  padding: 10px;
+}

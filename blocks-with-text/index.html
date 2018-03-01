@@ -45,7 +45,8 @@ additional_links:
 
       <dt id="fixed-height-right-way">А как надо? <a href="#fixed-height-right-way" class="post__anchor">#</a></dt>
       <dd>
-        <p>Используйте <code>min-height</code>:</p>
+
+        <p>Решение зависит от того, что нужно сделать. Если у блока по макету есть минимальная высота, но контента недостаточно, чтобы его растянуть, используйте <code>min-height</code>:</p>
 
         <ul class="compare">
           <li class="compare__item compare__item--bad">
@@ -64,11 +65,42 @@ additional_links:
           </li>
         </ul>
 
-        <figure class="figure figure--has-figcaption">
-          <img src="../assets/img/blocks-with-text/after.png" alt="С min-height текст не выпадает из родителя">
+        <img src="../assets/img/blocks-with-text/after.png" alt="С min-height текст не выпадает из родителя">
 
-          <figcaption><code>min-height</code> позволит добиться соответствия макету при вёрстке, а при добавлении контента блок просто вырастет вниз.</figcaption>
+        <p><code>min-height</code> позволит добиться соответствия макету, а при добавлении контента блок просто вырастет вниз.</p>
+
+        <p>Если же контента достаточно, <code>min-height</code> не нужен, достаточно задать стили для текста и <code>padding</code> для блока, и&nbsp;его размеры будут определяться содержимым. </p>
+
+        <p><code>padding</code> нужно задавать со всех сторон, чтобы при увеличении длины текста он не упёрся в края:</p>
+
+        <figure class="figure figure--has-figcaption">
+          <button class="button-example button-example--mh" type="button">Заказать</button>
+
+          <figcaption>Подопытная кнопка с минимальной шириной и высотой</figcaption>
         </figure>
+
+        <p>Изменим текст:</p>
+
+        <figure class="figure figure--has-figcaption">
+          <button class="button-example button-example--hp" type="button">Заказать слона</button>
+
+          <figcaption>Не хватает паддингов слева и справа</figcaption>
+        </figure>
+
+        <figure class="figure figure--has-figcaption">
+          <button class="button-example button-example--vp" type="button">Заказать слона</button>
+
+          <figcaption>Не хватает вертикальных паддингов</figcaption>
+        </figure>
+
+        <figure class="figure figure--has-figcaption">
+          <button class="button-example button-example--p" type="button">Заказать слона</button>
+
+          <figcaption>Все паддинги на месте</figcaption>
+        </figure>
+
+
+        <p></p>
       </dd>
     </dl>
 
