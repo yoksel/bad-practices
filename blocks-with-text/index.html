@@ -69,9 +69,11 @@ additional_links:
 
         <p><code>min-height</code> позволит добиться соответствия макету, а при добавлении контента блок просто вырастет вниз.</p>
 
+        <p>Ещё это может быть полезно как временное решение, чтобы разложить блоки по макету, до того, как будет стилизовано содержимое, после этого <code>min-height</code> убирается.</p>
+
         <p>Если же контента достаточно, <code>min-height</code> не нужен, достаточно задать стили для текста и <code>padding</code> для блока, и&nbsp;его размеры будут определяться содержимым. </p>
 
-        <p><code>padding</code> нужно задавать со всех сторон, чтобы при увеличении длины текста он не упёрся в края:</p>
+        <p>Если у блока есть явные границы, <code>padding</code> нужно задавать со всех сторон, чтобы при добавлении текста он не упёрся в края:</p>
 
         <figure class="figure figure--has-figcaption">
           <button class="button-example button-example--mh" type="button">Заказать</button>
@@ -96,7 +98,7 @@ additional_links:
         <figure class="figure figure--has-figcaption">
           <button class="button-example button-example--p" type="button">Заказать слона</button>
 
-          <figcaption>Все паддинги на месте</figcaption>
+          <figcaption>Все паддинги на месте, добавление текста ничего не ломает</figcaption>
         </figure>
 
 
