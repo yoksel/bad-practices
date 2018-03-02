@@ -88,6 +88,29 @@ additional_links:
         <p>Так контейнер, который мог бы растопырить страницу, оказывается уже, чем доступное пространство, и горизонтальной прокрутки не будет.</p>
 
         <p>Простое и быстрое решение.</p>
+
+        <p>Если всё же нужно ограничить ширину колонки вместе с полями внутри, вместо <code>width</code> используйте <code>max-width</code>:</p>
+
+        <ul class="compare">
+          <li class="compare__item compare__item--bad">
+            <div class="compare__title">Плохо</div>
+{% highlight css %}@media (min-width: 600px) {
+  .container {
+    width: 600px;
+  }
+}{% endhighlight %}
+        </li>
+        <li class="compare__item compare__item--good">
+          <div class="compare__title">Хорошо</div>
+{% highlight css %}@media (min-width: 600px) {
+  .container {
+    max-width: 600px;
+  }
+}{% endhighlight %}
+          </li>
+        </ul>
+
+        <p>Так колонка не растянется шире заданного значения, а если места окажется недостаточно — сожмётся.</p>
       </dd>
 
       <dt>Вариант с резиновой колонкой</dt>
