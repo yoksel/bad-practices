@@ -56,6 +56,14 @@ menu:
  - name: 'Контейнеры'
    url: '/containers/'
 
+projects:
+ - name: 'Простые правила разметки'
+   url: 'https://yoksel.github.io/easy-markup/'
+ - name: 'Простой CSS'
+   url: 'https://yoksel.github.io/easy-css/'
+ - name: 'HTML & CSS: как не надо'
+   url: '/'
+
 socials:
  - name: '@yoksel'
    url: 'https://twitter.com/yoksel'
